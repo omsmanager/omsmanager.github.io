@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Менеджер здаравоохранения</title>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400&display=swap&subset=cyrillic"
+    rel="stylesheet"
+  />
+
+  <style>
+    body,
+    html,
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
+      color: white;
+    }
+    h1,
+    h2 {
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      padding-top: 10px;
+      font-size: 30px;
+    }
+    .login-main {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: radial-gradient(
+        ellipse at bottom,
+        rgb(56, 105, 160) 0%,
+        #030617 100%
+      );
+    }
+    .login-row-1 {
+      border-bottom: 3px solid #eee;
+      min-height: 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .login-row-2 {
+      flex-grow: 1;
+      display: flex;
+      border-bottom: 3px solid #eee;
+      align-items: center;
+    }
+    .login-row-3 {
+      flex-grow: 1;
+      display: flex;
+      border-bottom: 3px solid #eee;
+      margin-bottom: 40px;
+    }
+    .login-row-4 {
+      min-height: 40px;
+    }
+    .form-group {
+      padding: 10px;
+    }
+    input {
+      padding: 5px;
+      color: #ddd;
+      width: 200px;
+      background-color: #393939;
+      font-size: 16px;
+      border: none;
+    }
+    #login-reverse {
+      width: 15%;
+      border-right: 3px solid #eee;
+      height: 100%;
+      text-align: right;
+    }
+    #login-div1 {
+      width: 15%;
+      border-right: 3px solid #eee;
+    }
+    #login-div2 {
+      display: flex;
+      align-items: center;
+    }
+    #login-logo {
+      flex-grow: 1;
+      text-align: center;
+    }
+    #logo-caption {
+      margin: 0 40px;
+      padding: 70px 40px;
+      border-left: 7px solid #5583ac;
+    }
+    #login-form {
+      background-color: rgba(21, 14, 14, 0.5);
+      margin: 40px 40px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    label {
+      width: 200px;
+      text-align: right;
+      display: inline-block;
+      padding-right: 10px;
+    }
+    #time {
+      color: #009ae3;
+      margin-right: 30px;
+    }
+
+    @keyframes spinner {
+      from,
+      40% {
+        -webkit-transform: rotateY(0deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(-360deg);
+      }
+    }
+
+    #spinner {
+      animation-name: spinner;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-duration: 6s;
+      transform-style: preserve-3d;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-main">
+    <div class="login-row-1">
+      <div
+        style="width: 15%; height: 100%; border-right: 3px solid white;"
+      ></div>
+      <div style="flex-grow: 1; text-align: right;">
+        <div id="time"></div>
+      </div>
+    </div>
+    <div class="login-row-2">
+      <div id="login-reverse">
+        <img src="logo.png" />
+      </div>
+      <div id="login-logo-text">
+        <div id="logo-caption">
+          <h1>Менеджер здаравоохранения</h1>
+          <h2>Татарстан</h2>
+        </div>
+      </div>
+      <div id="login-logo">
+        <img id="spinner" src="logo.svg" width="250" height="250" alt="logo" />
+      </div>
+    </div>
+
+    <div class="login-row-3">
+      <div id="login-div1"></div>
+      <div id="login-div2">
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" />
+          </div>
+          <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      function checkTime(i) {
+        return i < 10 ? "0" + i : i;
+      }
+
+      function startTime() {
+        var today = new Date(),
+          h = checkTime(today.getHours()),
+          m = checkTime(today.getMinutes()),
+          s = checkTime(today.getSeconds());
+        document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+        t = setTimeout(function() {
+          startTime();
+        }, 500);
+      }
+      startTime();
+    })();
+  </script>
+</body>
