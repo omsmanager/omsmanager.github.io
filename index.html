@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Менеджер здаравоохранения</title>
+  <title>Менеджер здравоохранения</title>
 
   <link
     href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400&display=swap&subset=cyrillic"
@@ -67,13 +67,14 @@
     .form-group {
       padding: 10px;
     }
-    input {
+    .form-group input {
       padding: 5px;
       color: #ddd;
       width: 200px;
       background-color: #393939;
       font-size: 16px;
       border: none;
+      margin-right: 15px;
     }
     #login-reverse {
       width: 15%;
@@ -106,7 +107,7 @@
       flex-direction: column;
       justify-content: center;
     }
-    label {
+    .form-group label {
       width: 200px;
       text-align: right;
       display: inline-block;
@@ -135,6 +136,29 @@
       animation-duration: 6s;
       transform-style: preserve-3d;
     }
+    #login-remember a {
+      color: rgb(131, 131, 131);
+      text-decoration: none;
+    }
+    #login-inputs {
+      position: relative;
+    }
+    #login-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: auto 0;
+      display: block;
+      bottom: 0;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background: #13233f;
+      border: 5px solid #1f2f46;
+      font-size: 25px;
+      color: #437fbb;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -149,16 +173,16 @@
     </div>
     <div class="login-row-2">
       <div id="login-reverse">
-        <img src="logo.png" />
+        <img src="logo-lite.png" />
       </div>
       <div id="login-logo-text">
         <div id="logo-caption">
           <h1>Менеджер здравоохранения</h1>
-          <h2>Татарстан</h2>
+          <h2>Московская область</h2>
         </div>
       </div>
       <div id="login-logo">
-        <img id="spinner" src="logo.svg" width="250" height="250" alt="logo" />
+        <img id="spinner" src="mo.svg" width="250" height="250" alt="logo" />
       </div>
     </div>
 
@@ -166,13 +190,19 @@
       <div id="login-div1"></div>
       <div id="login-div2">
         <form id="login-form">
-          <div class="form-group">
-            <label for="username">Имя пользователя:</label>
-            <input type="text" id="username" />
+          <div id="login-inputs">
+            <button id="login-button">&gt;</button>
+            <div class="form-group">
+              <label for="username">Имя пользователя:</label>
+              <input type="text" id="username" />
+            </div>
+            <div class="form-group">
+              <label for="password">Пароль:</label>
+              <input type="password" id="password" />
+            </div>
           </div>
-          <div class="form-group">
-            <label for="password">Пароль:</label>
-            <input type="password" id="password" />
+          <div id="login-remember">
+            <a href="#">Забыли пароль?</a> | <a href="#">Регистрация</a>
           </div>
         </form>
       </div>
